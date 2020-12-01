@@ -11,6 +11,10 @@ public class DbQueryStatus {
 		this.dbQueryExecResult = dbQueryExecResult;
 	}
 
+	public DbQueryStatus() {
+		super();
+	}
+
 	public String getMessage() {
 		return message;
 	}

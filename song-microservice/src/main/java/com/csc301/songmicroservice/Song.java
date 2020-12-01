@@ -31,6 +31,10 @@ public class Song {
 		this.songAlbum = songAlbum;
 		this.songAmountFavourites = 0;
 	}
+	
+	public Song() {
+		super();
+	}
 
 	public String getSongName() {
 		return songName;
