@@ -18,7 +18,7 @@ public class Song {
 	private String songName;
 	private String songArtistFullName;
 	private String songAlbum;
-	private long songAmountFavourites;
+	private Long songAmountFavourites;
 	
 	public static final String KEY_SONG_NAME = "songName";
 	public static final String KEY_SONG_ARTIST_FULL_NAME = "songArtistFullName";
@@ -29,7 +29,7 @@ public class Song {
 		this.songName = songName;
 		this.songArtistFullName = songArtistFullName;
 		this.songAlbum = songAlbum;
-		this.songAmountFavourites = 0;
+		this.songAmountFavourites = (long) 0;
 	}
 	
 	public Song() {

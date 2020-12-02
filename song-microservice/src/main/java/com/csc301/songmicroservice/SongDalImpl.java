@@ -37,9 +37,8 @@ public class SongDalImpl implements SongDal {
 			doc.append("songName", songToAdd.getSongName());
 			doc.append("songArtistFullName", songToAdd.getSongArtistFullName());
 			doc.append("songAlbum", songToAdd.getSongAlbum());
-			
 			// ???
-			doc.append("songAmountFavourites", 0);
+			doc.append("songAmountFavourites", (long)0);
 			// ???
 			col.insertOne(doc);
 			songToAdd.setId(doc.getObjectId("_id"));
@@ -82,7 +81,7 @@ public class SongDalImpl implements SongDal {
 		if (doc.containsKey("songAlbum"))
 			song.setSongAlbum(doc.getString("songAlbum"));
 		if (doc.containsKey("songAmountFavourites"))
-			song.setSongAmountFavourites(doc.getLong("songAmountFavourites"));
+			song.setSongAmountFavourites(doc.getInteger("songAmountFavourites"));
 		if (doc.containsKey("songName"))
 			song.setSongName(doc.getString("songName"));
 		if (doc.containsKey("songArtistFullName"))
@@ -132,19 +131,24 @@ public class SongDalImpl implements SongDal {
 	@Override
 	public DbQueryStatus updateSongFavouritesCount(String songId, boolean shouldDecrement) {
 		// TODO Auto-generated method stub
+		DbQueryStatus updatedStatus = new DbQueryStatus();
 		MongoCollection col = db.getCollection(COLLECTION_NAME);
 		DbQueryStatus status = findSongById(songId);
 		Song returnedSong = (Song) status.getData();
 		long updatedCount = returnedSong.getSongAmountFavourites();
-		if (shouldDecrement)
-			updatedCount--;
-		else
-			updatedCount++;
-		col.findOneAndUpdate(Filters.eq("_id", new ObjectId(songId)),
-				new Document("$set", new Document("songAmountFavourites", updatedCount)));
-
-		DbQueryStatus updatedStatus = new DbQueryStatus();
-		updatedStatus.setdbQueryExecResult(DbQueryExecResult.QUERY_OK);
+		if (updatedCount == 0 && shouldDecrement) {
+			updatedStatus.setdbQueryExecResult(DbQueryExecResult.QUERY_ERROR_GENERIC);
+			updatedStatus.setMessage("Favourite count for " + songId + "is already 0");
+		} else {
+			if (shouldDecrement)
+				updatedCount--;
+			else
+				updatedCount++;
+			col.findOneAndUpdate(Filters.eq("_id", new ObjectId(songId)),
+					new Document("$set", new Document("songAmountFavourites", updatedCount)));
+			
+			updatedStatus.setdbQueryExecResult(DbQueryExecResult.QUERY_OK);
+		}
 		return updatedStatus;
 	}
 }
