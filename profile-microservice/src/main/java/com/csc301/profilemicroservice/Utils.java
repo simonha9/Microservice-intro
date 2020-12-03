@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 
+import com.csc301.profilemicroservice.domain.DbQueryExecResult;
+
 import okhttp3.RequestBody;
 
 import java.util.Map;

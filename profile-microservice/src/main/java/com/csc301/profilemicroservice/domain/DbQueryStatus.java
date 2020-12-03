@@ -1,19 +1,17 @@
-package com.csc301.songmicroservice;
+package com.csc301.profilemicroservice.domain;
 
 public class DbQueryStatus {
 	
 	private String message;
 	private DbQueryExecResult dbQueryExecResult;
-	private Object data = null;  // Data can be anything returned from the Db
+	private Object data = null;  // Data can be anything returned to the Db
 	
 	public DbQueryStatus(String message, DbQueryExecResult dbQueryExecResult) {
 		this.message = message;
 		this.dbQueryExecResult = dbQueryExecResult;
 	}
-
-	public DbQueryStatus() {
-		super();
-	}
+	
+	public DbQueryStatus() {}
 
 	public String getMessage() {
 		return message;
