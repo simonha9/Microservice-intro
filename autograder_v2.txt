@@ -1,0 +1,177 @@
+Running auto-marker
+HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /profile (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CF844C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+Test #1 - "Add non-existing user - calling route /profile to add user with userName 'user1' and check response status" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /profile (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CF844C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #2 - "Add non-existing user - ensure user #1 was successfully stored" - Test Failed! | 0/1
+  Expected: "username: user1, password: user1-password, fullname: user1-fullName" of type str
+  Received: "username: NONE_PROVIDED_AUTOGRADER, password: NONE_PROVIDED_AUTOGRADER, fullname: NONE_PROVIDED_AUTOGRADER" of type str
+Test #3 - "Add non-existing user #2 - calling route /profile to add user with userName 'user1' and check response status" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /profile (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFA74F0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #4 - "Add non-existing user - ensure user #2 was successfully stored" - Test Failed! | 0/1
+  Expected: "username: ilir, password: ilir-password, fullname: ilir-fullName" of type str
+  Received: "username: NONE_PROVIDED_AUTOGRADER, password: NONE_PROVIDED_AUTOGRADER, fullname: NONE_PROVIDED_AUTOGRADER" of type str
+Test #5 - "Add existing user - calling route /profile to add user with userName 'user1'" - Test Failed! | 0/1
+  Expected: "Any response except OK since 'user1' already exists" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /profile (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFAE250>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #6 - "Add existing user - calling route /profile to add user with userName 'user1'" - Test Failed! | 0/1
+  Expected: "Any response except OK since params are missing" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /profile (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFAEBB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #7 - "Add new song with correct parameters - check status is OK" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "500" of type int
+Test #8 - "Add new song with correct parameters - check if response is as expected" - Test Failed! | 0/1
+  Expected: "songName: Hey There Delilah, songArtistFullName: Plain White T's, songAlbum: All That We Needed, songAmountFavourites: 0" of type str
+  Received: "Your endpoint didn't return the proper response body! Received: {'timestamp': '2020-12-25T09:09:34.501+0000', 'status': 500, 'error': 'Internal Server Error', 'message': 'I/O error on POST request for "http://localhost:3002/createSongNode": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect', 'trace': 'org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:3002/createSongNode": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect\r\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:744)\r\n\tat org.springframework.web.client.RestTemplate.execute(RestTemplate.java:670)\r\n\tat org.springframework.web.client.RestTemplate.postForEntity(RestTemplate.java:445)\r\n\tat com.csc301.songmicroservice.SongController.addSong(SongController.java:91)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:567)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)\r\n\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)\r\n\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)\r\n\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)\r\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:660)\r\n\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)\r\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:741)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)\r\n\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\r\n\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)\r\n\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)\r\n\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)\r\n\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\r\n\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)\r\n\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)\r\n\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\r\n\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:853)\r\n\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1587)\r\n\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\r\n\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\r\n\tat java.base/java.lang.Thread.run(Thread.java:830)\r\nCaused by: java.net.ConnectException: Connection refused: connect\r\n\tat java.base/sun.nio.ch.Net.connect0(Native Method)\r\n\tat java.base/sun.nio.ch.Net.connect(Net.java:493)\r\n\tat java.base/sun.nio.ch.Net.connect(Net.java:482)\r\n\tat java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:588)\r\n\tat java.base/java.net.Socket.connect(Socket.java:603)\r\n\tat java.base/java.net.Socket.connect(Socket.java:552)\r\n\tat java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:182)\r\n\tat java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474)\r\n\tat java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569)\r\n\tat java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:242)\r\n\tat java.base/sun.net.www.http.HttpClient.New(HttpClient.java:341)\r\n\tat java.base/sun.net.www.http.HttpClient.New(HttpClient.java:362)\r\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1248)\r\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1187)\r\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1081)\r\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1015)\r\n\tat org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76)\r\n\tat org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)\r\n\tat org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:53)\r\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:735)\r\n\t... 57 more\r\n', 'path': '/addSong'}" of type str
+Test #9 - "Add new song with correct parameters - check song is stored correctly in DB" - Test Failed! | 0/1
+  Expected: "songName: {songName}, songArtistFullName: {songArtistFullName}, songAlbum: {songAlbum}, songAmountFavourites: {songAmountFavourites}" of type str
+  Received: "Your endpoint didn't return the proper response body! Received: {'timestamp': '2020-12-25T09:09:34.501+0000', 'status': 500, 'error': 'Internal Server Error', 'message': 'I/O error on POST request for "http://localhost:3002/createSongNode": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect', 'trace': 'org.springframework.web.client.ResourceAccessException: I/O error on POST request for "http://localhost:3002/createSongNode": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect\r\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:744)\r\n\tat org.springframework.web.client.RestTemplate.execute(RestTemplate.java:670)\r\n\tat org.springframework.web.client.RestTemplate.postForEntity(RestTemplate.java:445)\r\n\tat com.csc301.songmicroservice.SongController.addSong(SongController.java:91)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\r\n\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:567)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)\r\n\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892)\r\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)\r\n\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039)\r\n\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)\r\n\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)\r\n\tat org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)\r\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:660)\r\n\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)\r\n\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:741)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)\r\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\r\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\r\n\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)\r\n\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\r\n\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)\r\n\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)\r\n\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)\r\n\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\r\n\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)\r\n\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)\r\n\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\r\n\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:853)\r\n\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1587)\r\n\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)\r\n\tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)\r\n\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\r\n\tat java.base/java.lang.Thread.run(Thread.java:830)\r\nCaused by: java.net.ConnectException: Connection refused: connect\r\n\tat java.base/sun.nio.ch.Net.connect0(Native Method)\r\n\tat java.base/sun.nio.ch.Net.connect(Net.java:493)\r\n\tat java.base/sun.nio.ch.Net.connect(Net.java:482)\r\n\tat java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:588)\r\n\tat java.base/java.net.Socket.connect(Socket.java:603)\r\n\tat java.base/java.net.Socket.connect(Socket.java:552)\r\n\tat java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:182)\r\n\tat java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:474)\r\n\tat java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:569)\r\n\tat java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:242)\r\n\tat java.base/sun.net.www.http.HttpClient.New(HttpClient.java:341)\r\n\tat java.base/sun.net.www.http.HttpClient.New(HttpClient.java:362)\r\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1248)\r\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1187)\r\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1081)\r\n\tat java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1015)\r\n\tat org.springframework.http.client.SimpleBufferingClientHttpRequest.executeInternal(SimpleBufferingClientHttpRequest.java:76)\r\n\tat org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48)\r\n\tat org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:53)\r\n\tat org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:735)\r\n\t... 57 more\r\n', 'path': '/addSong'}" of type str
+Test #10 - "Add song with missing parameter songArtistFullName - check status non-OK" - Test Passed! | 1/1
+  Expected: "Any string that isn't OK" of type str
+  Received: "INTERNAL_SERVER_ERROR" of type str
+Test #11 - "Add song with missing parameter songArtistFullName - ensure number of documents hasn't changed" - Test Passed! | 1/1
+  Expected: "11" of type int
+  Received: "11" of type int
+  More details: For the above test, if the received result is 99999, the endpoint is coded incorrectly.
+Test #12 - "Add song with unexpected parameter 'unexpectedParam' - ensure unexpected parameter is ignored and status is OK" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "500" of type int
+Test #13 - "Add song with unexpected parameter 'unexpectedParam' - ensure unexpected parameter is ignored and song was added successfully by checking if ID exists" - Test Failed! | 0/1
+  Expected: "True" of type bool
+  Received: "'data'" of type KeyError
+  More details: Exception raised!
+Test #14 - "Add song with all invalid parameters - ensure correct status of not-OK" - Test Passed! | 1/1
+  Expected: "Any response that isn't OK" of type str
+  Received: "INTERNAL_SERVER_ERROR" of type str
+Test #15 - "Add song with all invalid parameters - ensure no documents were added" - Test Passed! | 1/1
+  Expected: "12" of type int
+  Received: "12" of type int
+Test #16 - "Get song title by ID which exists - check status is OK" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "404" of type int
+Test #17 - "Get song title by ID which exists - check title matches what was sent" - Test Failed! | 0/1
+  Expected: "Hey There Delilah" of type str
+  Received: "'data'" of type KeyError
+  More details: Exception raised!
+Test #18 - "Get song title by ID which doesn't exist - check status is non-OK" - Test Passed! | 1/1
+  Expected: "Any status which is non-OK" of type str
+  Received: "500" of type int
+Test #19 - "Follow friend with correct body params - calling /followFriend as userName 'user1' to follow friend with userName 'ilir'" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /followFriend/user1/ilir (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFAE160>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #20 - "Follow friend with correct body params - ensure the follower-followee relationship is one-directional" - Test Passed! | 1/1
+  Expected: "False" of type bool
+  Received: "False" of type bool
+  More details: For the above test, we test to make sure that 'ilir' is not friends with 'user1' because the relationship is one-directional. 'ilir's friend list is retrieved directly from the database.
+Test #21 - "Follow friend with correct body params - calling /followFriend as userName 'ilir' to follow friend with userName 'user1'" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /followFriend/ilir/user1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFA7640>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #22 - "Follow friend with correct body params - ensure the follower-followee relationship is two-directional" - Test Passed! | 1/1
+  Expected: "False" of type bool
+  Received: "False" of type bool
+  More details: For the above test, we test to see if the user 'user1' is in 'ilir's friend list. Because the relationship is now two-directional, we expect to see 'user1' in 'ilir's friend list. Results are retrieved directly from the database.
+Test #23 - "Follow non-existent friend as existing user - ensure a non-OK response" - Test Failed! | 0/1
+  Expected: "Any response except OK since the follower is non-existent" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /followFriend/user1/non-existing-user (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CF84CA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #24 - "Follow existing friend as non-existing user - ensure a non-OK response" - Test Failed! | 0/1
+  Expected: "Any response except OK since the followee is non-existent" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /followFriend/non-existing-user/ilir (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFBA0A0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #25 - "Follow friend as an existing user (missing friendUserName param) - ensure a non-OK response" - Test Failed! | 0/1
+  Expected: "Any response except OK since 'friendUserName' param is missing" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /followFriend/user1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFBAA60>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+Test #26 - "Like an existing song - check to see if status is OK" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /likeSong/user1/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CF6AD00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #27 - "Like an existing song - check to see if liking via /likeSong increments favourites counter" - Test Failed! | 0/1
+  Expected: "1" of type int
+  Received: "'NoneType' object is not subscriptable" of type TypeError
+  More details: Exception raised!
+Test #28 - "Get all friends' favorite song titles - check status is OK" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /getAllFriendFavouriteSongTitles/ilir (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFA7A90>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+  More details: Exception raised!
+Test #29 - "Get all friends' favorite song titles - ensure 'user1' is in 'ilir's friends list" - Test Failed! | 0/1
+  Expected: "True" of type bool
+  Received: "local variable 'response' referenced before assignment" of type UnboundLocalError
+  More details: Exception raised!
+Test #30 - "Get all friends' favorite song titles - ensure existing song is in 'user1's favourited songs" - Test Failed! | 0/1
+  Expected: "True" of type bool
+  Received: "local variable 'data' referenced before assignment" of type UnboundLocalError
+  More details: Exception raised!
+Test #31 - "Increment valid song's favourites count - check if status is OK" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "'NoneType' object is not subscriptable" of type TypeError
+  More details: Exception raised!
+Test #32 - "Increment valid song's favourites count - check if song amount favourites incremented via DB" - Test Failed! | 0/1
+  Expected: "99999" of type int
+  Received: "'NoneType' object is not subscriptable" of type TypeError
+  More details: Exception raised!
+  More details: For the above test, we test to see if the number of favourites for this existing song is 1 higher than the number of favourites before incrementing.
+  More details: If the expected result is 99999, your endpoint does not work. See the above tests for reasons why.
+Test #33 - "Increment non-existent song's favourites count - check if status is non-OK" - Test Passed! | 1/1
+  Expected: "Any status that is non-OK" of type str
+  Received: "500" of type int
+Test #34 - "Increment non-existent song's favourites count - ensure no song was created from a non-existent ID" - Test Passed! | 1/1
+  Expected: "None" of type NoneType
+  Received: "None" of type NoneType
+  More details: For the above test, we ensure that there isn't an entry in the database corresponding to the non-existing ID as a result of this increment call.
+Test #35 - "Decrement valid song's favourites count - check if status is OK" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "'NoneType' object is not subscriptable" of type TypeError
+  More details: Exception raised!
+Test #36 - "Decrement valid song's favourites count - check if count is decremented" - Test Failed! | 0/1
+  Expected: "99999" of type int
+  Received: "'NoneType' object is not subscriptable" of type TypeError
+  More details: Exception raised!
+  More details: For the above test, upon decrementing a song's favourites count, we check if song's favourites count has updated in the database to be one lower than what it was before this call was made.
+  More details: If your expected result was 99999, your endpoint doesn't work. See the above tests for reasons why.
+Test #37 - "Decrement valid song's favourites count past 0 - ensure count stays at 0" - Test Passed! | 1/1
+  Expected: "0" of type int
+  Received: "0" of type int
+Test #38 - "Decrement non-existent song's favourites count - check if status is OK" - Test Passed! | 1/1
+  Expected: "Any status that is not-OK" of type str
+  Received: "500" of type int
+Test #39 - "Decrement non-existent song's favourites count - check if the non-existent song was created" - Test Passed! | 1/1
+  Expected: "None" of type NoneType
+  Received: "None" of type NoneType
+  More details: For the above test, upon decrementing a non-existent song's favourites count, we ensure that this song wasn't created instead.
+Test #40 - "Unlike an existing song - check to see if status is OK" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /unlikeSong/user1/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFA7F10>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+Test #41 - "Unlike an existing song - check to see if the user still likes the song in the database" - Test Passed! | 1/1
+  Expected: "False" of type bool
+  Received: "False" of type bool
+Test #42 - "Unlike an existing song - check to see if the likes for the song has decreased by 1" - Test Failed! | 0/1
+  Expected: "99999" of type int
+  Received: "'NoneType' object is not subscriptable" of type TypeError
+  More details: Exception raised!
+  More details: If your expected number of favourites is 99999, your endpoint doesn't work. See the above tests for reason why.
+Test #43 - "Unfollow existing friend - check for OK status when 'user1' unfollows 'ilir'" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "HTTPConnectionPool(host='localhost', port=3002): Max retries exceeded with url: /unfollowFriend/user1/ilir (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000024A3CFAE310>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))" of type ConnectionError
+Test #44 - "Unfollow existing friend - check to ensure 'ilir' didn't unfollow 'user1'" - Test Failed! | 0/1
+  Expected: "True" of type bool
+  Received: "False" of type bool
+Test #45 - "Unfollow existing friend - check to ensure 'user1' unfollowed 'ilir' in the database" - Test Passed! | 1/1
+  Expected: "False" of type bool
+  Received: "False" of type bool
+Test #46 - "Delete song with valid ID - check for OK status" - Test Failed! | 0/1
+  Expected: "OK" of type str
+  Received: "404" of type int
+Test #47 - "Delete song with valid ID - check for deletion of song in Song database" - Test Passed! | 1/1
+  Expected: "None" of type NoneType
+  Received: "None" of type NoneType
+Test #48 - "Delete song with valid ID - check for deletion of song in Profile database" - Test Passed! | 1/1
+  Expected: "None" of type NoneType
+  Received: "None" of type NoneType
+Automarker Grade: 16/48
